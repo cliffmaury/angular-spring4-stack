@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<configuration>
+<configuration scan="true">
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <Pattern>.%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n
             </Pattern>
         </encoder>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>TRACE</level>
-        </filter>
     </appender>
 
-    <logger name="fr.valtech">
-        <level value="INFO"/>
-    </logger>
-
-    <logger name="org.springframework">
-        <level value="INFO"/>
-    </logger>
-
+    <logger name="fr.valtech.app" value="DEBUG"/>
+    <logger name="org.springframework" value="INFO"/>
+    <logger name="org.springframework.web.servlet" value="INFO"/>
     <root>
-        <level value="INFO"/>
+        <level value="DEBUG"/>
         <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>
