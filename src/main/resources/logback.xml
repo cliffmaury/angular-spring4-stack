@@ -11,6 +11,14 @@
         </filter>
     </appender>
 
+    <logger name="fr.valtech">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="INFO"/>
+    </logger>
+
     <root>
         <level value="INFO"/>
         <appender-ref ref="CONSOLE"/>
