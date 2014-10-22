@@ -8,3 +8,4 @@ src/main/webapp/node_modules
 .tmp
 src/main/webapp/dist
 build
+angularspring.iml
