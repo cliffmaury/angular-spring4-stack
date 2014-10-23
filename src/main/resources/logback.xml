@@ -8,7 +8,7 @@
         </encoder>
     </appender>
 
-    <logger name="fr.valtech.app" value="DEBUG"/>
+    <logger name="fr.valtech.app" value="WARN"/>
     <logger name="org.springframework" value="INFO"/>
     <logger name="org.springframework.web.servlet" value="INFO"/>
     <root>

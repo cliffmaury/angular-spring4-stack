@@ -15,9 +15,29 @@ public class HomeController {
     @Log
     private Logger logger;
 
+    public static class User {
+        String name, lastName;
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String hello() {
-        logger.debug("enter controller");
+        logger.warn("enter controller");
         return "Hello World 3";
+    }
+
+    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    public User user() {
+        User u = new User();
+        u.name = "NAME";
+        u.lastName = "LASTNAME";
+        return  u;
     }
 }
