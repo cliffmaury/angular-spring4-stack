@@ -1,4 +1,4 @@
-package fr.valtech.app.web;
+package fr.valtech.app.rest;
 
 import fr.valtech.log.Log;
 import org.slf4j.Logger;
