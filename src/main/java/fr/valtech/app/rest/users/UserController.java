@@ -1,4 +1,4 @@
-package fr.valtech.app.rest;
+package fr.valtech.app.rest.users;
 
 import fr.valtech.app.rest.dto.UserDTO;
 import fr.valtech.app.service.UserService;
