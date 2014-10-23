@@ -1,5 +1,6 @@
 package fr.valtech.app.rest;
 
+import fr.valtech.app.rest.dto.UserDTO;
 import fr.valtech.log.Log;
 import org.slf4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,18 +16,6 @@ public class HomeController {
     @Log
     private Logger logger;
 
-    public static class User {
-        String name, lastName;
-
-        public String getLastName() {
-            return lastName;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String hello() {
         logger.warn("enter controller");
@@ -34,10 +23,8 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/user",method = RequestMethod.GET)
-    public User user() {
-        User u = new User();
-        u.name = "NAME";
-        u.lastName = "LASTNAME";
+    public UserDTO user() {
+        UserDTO u = new UserDTO("NAME","LASTNAME");
         return  u;
     }
 }
