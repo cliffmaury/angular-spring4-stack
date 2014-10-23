@@ -12,7 +12,7 @@
     <logger name="org.springframework" value="INFO"/>
     <logger name="org.springframework.web.servlet" value="INFO"/>
     <root>
-        <level value="DEBUG"/>
+        <level value="INFO"/>
         <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>
