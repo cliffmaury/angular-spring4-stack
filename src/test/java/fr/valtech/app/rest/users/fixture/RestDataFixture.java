@@ -20,20 +20,22 @@ public class RestDataFixture {
         List<User> users = new ArrayList<>();
 
         users.add(createRandomUser());
+        users.add(createRandomUser());
+        users.add(createRandomUser());
 
         return users;
     }
 
     public static User createRandomUser() {
 
-        return new User("name:"+randomString(),"lastName:"+randomString());
+        return new User("name:" + randomString(), "lastName:" + randomString());
     }
 
     private static String randomString() {
 
         StringBuilder sb = new StringBuilder(10);
-        for(int i =0;i<10;i++) {
-            String oneChar = ALPHA.charAt(random.nextInt(ALPHA.length()))+"";
+        for (int i = 0; i < 10; i++) {
+            String oneChar = ALPHA.charAt(random.nextInt(ALPHA.length())) + "";
             sb.append(random.nextBoolean() ? oneChar.toLowerCase() : oneChar);
         }
         return sb.toString();
