@@ -1,4 +1,4 @@
-package fr.valtech.angularspring.app.rest.utils;
+package fr.valtech.angularspring.app.web.utils;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,8 +1,8 @@
-package fr.valtech.angularspring.app.rest.users;
+package fr.valtech.angularspring.app.web.users;
 
 import fr.valtech.angularspring.app.domain.User;
-import fr.valtech.angularspring.app.rest.dto.UserDTO;
 import fr.valtech.angularspring.app.service.UserService;
+import fr.valtech.angularspring.app.web.dto.UserDTO;
 import fr.valtech.angularspring.log.Log;
 import org.slf4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;

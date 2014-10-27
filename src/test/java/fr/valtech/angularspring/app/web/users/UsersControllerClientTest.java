@@ -1,8 +1,8 @@
-package fr.valtech.angularspring.app.rest.users;
+package fr.valtech.angularspring.app.web.users;
 
-import fr.valtech.angularspring.app.rest.dto.UserDTO;
-import fr.valtech.angularspring.app.rest.users.fixture.RestDataFixture;
-import fr.valtech.angularspring.app.rest.utils.TestUtil;
+import fr.valtech.angularspring.app.web.dto.UserDTO;
+import fr.valtech.angularspring.app.web.users.fixture.RestDataFixture;
+import fr.valtech.angularspring.app.web.utils.TestUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpMethod;

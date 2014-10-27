@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackageClasses = fr.valtech.angularspring.app.rest.__Package.class)
+@ComponentScan(basePackageClasses = fr.valtech.angularspring.app.web.__Package.class)
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 

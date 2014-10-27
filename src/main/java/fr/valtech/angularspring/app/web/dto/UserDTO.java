@@ -1,4 +1,4 @@
-package fr.valtech.angularspring.app.rest.dto;
+package fr.valtech.angularspring.app.web.dto;
 
 public class UserDTO {
 

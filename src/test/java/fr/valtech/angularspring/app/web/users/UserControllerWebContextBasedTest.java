@@ -1,8 +1,8 @@
-package fr.valtech.angularspring.app.rest.users;
+package fr.valtech.angularspring.app.web.users;
 
-import fr.valtech.angularspring.app.rest.users.fixture.RestDataFixture;
-import fr.valtech.angularspring.app.rest.utils.TestUtil;
 import fr.valtech.angularspring.app.service.UserService;
+import fr.valtech.angularspring.app.web.users.fixture.RestDataFixture;
+import fr.valtech.angularspring.app.web.utils.TestUtil;
 import fr.valtech.angularspring.config.TestConfig;
 import fr.valtech.angularspring.config.WebMvcConfig;
 import org.junit.Before;

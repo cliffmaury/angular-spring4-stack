@@ -1,4 +1,4 @@
-package fr.valtech.angularspring.app.rest.users.fixture;
+package fr.valtech.angularspring.app.web.users.fixture;
 
 import fr.valtech.angularspring.app.domain.User;
 
