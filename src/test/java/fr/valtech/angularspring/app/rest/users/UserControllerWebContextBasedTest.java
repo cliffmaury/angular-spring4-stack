@@ -22,6 +22,7 @@ import javax.inject.Inject;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
@@ -35,6 +36,14 @@ public class UserControllerWebContextBasedTest {
 
     // see tutorial
     // http://www.petrikainulainen.net/programming/spring-framework/unit-testing-of-spring-mvc-controllers-configuration#appcontext-config
+
+    // spring doc
+    // http://docs.spring.io/spring/docs/current/spring-framework-reference/html/testing.html#spring-mvc-test-framework
+
+    // The "webAppContextSetup" loads the actual Spring MVC configuration resulting in a more complete integration test.
+    // Since the TestContext framework caches the loaded Spring configuration, it helps to keep tests running fast even as more tests get added.
+    // Furthermore, you can inject mock services into controllers through Spring configuration, in order to remain focused on testing the web layer.
+    // Here is an example of declaring a mock service with Mockito:
 
     private MockMvc mockMvc;
 
@@ -60,6 +69,7 @@ public class UserControllerWebContextBasedTest {
 
         mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)).
                 andExpect(status().isOk()).
+                andDo(print()).
                 andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8)).
                 andExpect(jsonPath("$", hasSize(3)));
 
