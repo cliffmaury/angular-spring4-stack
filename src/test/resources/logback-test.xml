@@ -8,7 +8,7 @@
     </appender>
 
     <logger name="fr.valtech.angularspring.app">
-        <level value="INFO"/>
+        <level value="DEBUG"/>
     </logger>
     <logger name="org.springframework">
         <level value="WARN"/>

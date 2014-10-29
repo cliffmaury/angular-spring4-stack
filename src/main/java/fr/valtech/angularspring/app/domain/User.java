@@ -1,11 +1,18 @@
 package fr.valtech.angularspring.app.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 /**
  * Created by cliff.maury on 23/10/2014.
  */
-public class User {
+@Entity
+public class User extends BaseEntity {
 
+    @Column(length = 50)
     private String name;
+
+    @Column(length = 50)
     private String lastName;
 
     public User() {
