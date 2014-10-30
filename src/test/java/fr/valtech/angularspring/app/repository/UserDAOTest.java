@@ -1,5 +1,6 @@
 package fr.valtech.angularspring.app.repository;
 
+import fr.valtech.angularspring.app.dao.UserDAO;
 import fr.valtech.angularspring.app.domain.User;
 import fr.valtech.angularspring.config.LogConfig;
 import fr.valtech.angularspring.config.PersistenceJPAConfig;

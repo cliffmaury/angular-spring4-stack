@@ -30,7 +30,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 //@PropertySource({"classpath:"})
-@ComponentScan(basePackageClasses = {fr.valtech.angularspring.app.domain.__Package.class, fr.valtech.angularspring.app.repository.__Package.class})
+@ComponentScan(basePackageClasses = { fr.valtech.angularspring.app.domain.__Package.class, fr.valtech.angularspring.app.dao.__Package.class })
 @EnableJpaRepositories(basePackageClasses = fr.valtech.angularspring.app.repository.__Package.class)
 public class PersistenceJPAConfig {
 
