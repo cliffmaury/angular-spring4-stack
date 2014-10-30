@@ -1,30 +1,25 @@
 package fr.valtech.angularspring.config;
 
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * Created by cliff.maury on 22/10/2014.
  */
-public class AppInitializer implements WebApplicationInitializer {
-
-    private static final String SCAN_ROOT_PACKAGE = __Package.class.getPackage().getName();
+public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{PersistenceJPAConfig.class, AppConfig.class, LogConfig.class};
+    }
 
-        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.setConfigLocation(SCAN_ROOT_PACKAGE);
-        servletContext.addListener(new ContextLoaderListener(context));
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(context));
-        dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/");
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[]{LogConfig.class, WebMvcConfig.class};
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
     }
 
 }
