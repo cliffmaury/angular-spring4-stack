@@ -2,11 +2,13 @@ package fr.valtech.angularspring.app.repository;
 
 import fr.valtech.angularspring.app.domain.User;
 import fr.valtech.angularspring.config.ApplicationConfig;
+import fr.valtech.angularspring.config.Profiles;
 import fr.valtech.angularspring.log.Log;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +29,7 @@ import static org.junit.Assert.assertThat;
 // by default, be automatically rolled back after completion of the test.
 @Transactional
 //@TransactionConfiguration(defaultRollback = false)
-//@ActiveProfiles("test")
+@ActiveProfiles(Profiles.TEST)
 public class UserRepositoryTest {
 
     @Log

@@ -3,6 +3,7 @@ package fr.valtech.angularspring.config;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,7 +20,7 @@ import javax.inject.Inject;
         @ContextConfiguration(classes = ApplicationConfig.class),
         @ContextConfiguration(classes = WebConfig.class)
 })
-//@ActiveProfiles("test")
+@ActiveProfiles(Profiles.TEST)
 @WebAppConfiguration
 public class SpringConfigTest {
 

@@ -27,7 +27,10 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        //System.setProperty("spring.profiles.active","test");
+        // initialize default profile
+        if (System.getProperty("spring.profiles.active") == null) {
+            System.setProperty("spring.profiles.active", Profiles.TEST);
+        }
         super.onStartup(servletContext);
     }
 }

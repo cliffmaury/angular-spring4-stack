@@ -2,6 +2,8 @@ package fr.valtech.angularspring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -23,23 +25,23 @@ import javax.sql.DataSource;
 public class DataSourceConfig {
 
     @Bean
-    //@Profile("test")
+    @Profile(Profiles.TEST)
     public DataSource dataSourceTEST() {
         EmbeddedDatabase database = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).build();
         return database;
     }
 
-//    @Bean
-//    @Profile("dev")
-//    public DataSource dataSourceDEV() {
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//        dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
-//        dataSource.setUrl("jdbc:hsqldb:hsql://localhost:9001/testdb");
-//        return dataSource;
-//    }
+    @Bean
+    @Profile(Profiles.DEV)
+    public DataSource dataSourceDEV() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
+        dataSource.setUrl("jdbc:hsqldb:hsql://localhost:9001/testdb");
+        return dataSource;
+    }
 
     @Bean
-    //@Profile({ "test", "dev" ,""})
+    @Profile({ Profiles.TEST, Profiles.DEV })
     public JpaVendorAdapter jpaVendorAdaptor() {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setDatabase(Database.HSQL);
