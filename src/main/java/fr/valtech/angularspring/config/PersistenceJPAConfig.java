@@ -3,6 +3,7 @@ package fr.valtech.angularspring.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -30,6 +31,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 //@PropertySource({"classpath:"})
 @ComponentScan(basePackageClasses = {fr.valtech.angularspring.app.domain.__Package.class, fr.valtech.angularspring.app.repository.__Package.class})
+@EnableJpaRepositories(basePackageClasses = fr.valtech.angularspring.app.repository.__Package.class)
 public class PersistenceJPAConfig {
 
     @Bean
