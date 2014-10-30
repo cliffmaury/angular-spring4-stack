@@ -5,21 +5,21 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 /**
  * Created by cliff.maury on 22/10/2014.
  */
-public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{PersistenceJPAConfig.class, AppConfig.class, LogConfig.class};
+        return new Class<?>[]{ ApplicationConfig.class };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{LogConfig.class, WebMvcConfig.class};
+        return new Class<?>[]{ LogConfig.class, WebMvcConfig.class };
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/"};
+        return new String[]{ "/" };
     }
 
 }
