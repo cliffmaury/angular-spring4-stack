@@ -2,8 +2,7 @@ package fr.valtech.angularspring.app.repository;
 
 import fr.valtech.angularspring.app.dao.UserDAO;
 import fr.valtech.angularspring.app.domain.User;
-import fr.valtech.angularspring.config.LogConfig;
-import fr.valtech.angularspring.config.PersistenceJPAConfig;
+import fr.valtech.angularspring.config.ApplicationConfig;
 import fr.valtech.angularspring.log.Log;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,8 +23,9 @@ import static org.junit.Assert.assertThat;
  * Created by cliff.maury on 28/10/2014.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {LogConfig.class, PersistenceJPAConfig.class})
+@ContextConfiguration(classes = { ApplicationConfig.class })
 @Transactional
+//@ActiveProfiles("test")
 public class UserDAOTest {
 
     @Log

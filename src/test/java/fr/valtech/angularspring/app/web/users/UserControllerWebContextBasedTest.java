@@ -4,7 +4,7 @@ import fr.valtech.angularspring.app.service.UserService;
 import fr.valtech.angularspring.app.web.users.fixture.RestDataFixture;
 import fr.valtech.angularspring.app.web.utils.TestUtil;
 import fr.valtech.angularspring.config.TestConfig;
-import fr.valtech.angularspring.config.WebMvcConfig;
+import fr.valtech.angularspring.config.WebConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by cliff.maury on 23/10/2014.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestConfig.class, WebMvcConfig.class,})
+@ContextConfiguration(classes = { TestConfig.class, WebConfig.class, })
 @WebAppConfiguration
 public class UserControllerWebContextBasedTest {
 

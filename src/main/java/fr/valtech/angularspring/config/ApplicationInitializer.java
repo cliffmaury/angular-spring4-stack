@@ -2,6 +2,9 @@ package fr.valtech.angularspring.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+
 /**
  * Created by cliff.maury on 22/10/2014.
  */
@@ -14,7 +17,7 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{ LogConfig.class, WebMvcConfig.class };
+        return new Class<?>[]{ WebConfig.class };
     }
 
     @Override
@@ -22,4 +25,9 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
         return new String[]{ "/" };
     }
 
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        //System.setProperty("spring.profiles.active","test");
+        super.onStartup(servletContext);
+    }
 }

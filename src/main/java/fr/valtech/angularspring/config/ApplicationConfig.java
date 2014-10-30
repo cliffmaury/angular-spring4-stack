@@ -15,13 +15,18 @@ import java.util.Arrays;
  */
 
 /**
- * Configuration for persistence, infrastructure, service and security layers
+ * Configuration for datasource, persistence, repository, service and security layers
+ * <p>
+ * Inspired by http://javaetmoi.com/2014/06/spring-framework-java-configuration/
  */
 @Configuration
 @Import({
         LogConfig.class,
-        PersistenceJPAConfig.class,
-        AppConfig.class
+        DataSourceConfig.class,
+        PersistenceConfig.class,
+        DaoConfig.class,
+        RepositoryConfig.class,
+        ServiceConfig.class
 })
 public class ApplicationConfig {
 
@@ -33,7 +38,6 @@ public class ApplicationConfig {
 
     /**
      * Application initialization
-     * <p>
      * Spring profiles are set by -Dspring.profiles.active=PROFILE
      */
     @PostConstruct
