@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -24,7 +26,7 @@ public class PersistenceConfig {
     private DataSource dataSource;
 
     @Inject
-    private JpaVendorAdapter jpaVendorAdaptor;
+    private Database database;
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
@@ -33,7 +35,7 @@ public class PersistenceConfig {
         //factoryBean.setJtaDataSource();
         emf.setPackagesToScan(fr.valtech.angularspring.app.domain.__Package.class.getPackage().getName());
         //emf.setPersistenceProvider(new HibernatePersistenceProvider());
-        emf.setJpaVendorAdapter(jpaVendorAdaptor);
+        emf.setJpaVendorAdapter(jpaVendorAdaptor());
         emf.setJpaProperties(jpaProperties());
         emf.afterPropertiesSet();
         return emf.getObject();
@@ -45,6 +47,15 @@ public class PersistenceConfig {
 //        extraProperties.put("hibernate.show_sql", "true");
         extraProperties.put("hibernate.hbm2ddl.auto", "update");
         return extraProperties;
+    }
+
+    @Bean
+    public JpaVendorAdapter jpaVendorAdaptor() {
+        HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+        jpaVendorAdapter.setDatabase(database);
+        jpaVendorAdapter.setShowSql(true);
+        jpaVendorAdapter.setGenerateDdl(true);
+        return jpaVendorAdapter;
     }
 
     @Bean
