@@ -23,6 +23,7 @@
         <spring.version>4.1.1.RELEASE</spring.version>
         <javax.inject.version>1</javax.inject.version>
 
+        <spring-data-jpa.version>1.6.4.RELEASE</spring-data-jpa.version>
     </properties>
 
     <dependencyManagement>
@@ -83,6 +84,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
         </dependency>
 
         <dependency>
