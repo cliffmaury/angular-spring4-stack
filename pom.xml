@@ -20,10 +20,12 @@
         <jcl-over-slf4j.version>1.7.7</jcl-over-slf4j.version>
         <logback.version>1.1.2</logback.version>
 
-        <spring.version>4.1.1.RELEASE</spring.version>
         <javax.inject.version>1</javax.inject.version>
 
+        <spring.version>4.1.1.RELEASE</spring.version>
         <spring-data-jpa.version>1.6.4.RELEASE</spring-data-jpa.version>
+        <spring-security.version>3.2.5.RELEASE</spring-security.version>
+
     </properties>
 
     <dependencyManagement>
@@ -34,6 +36,14 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
                 <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-bom</artifactId>
+                <version>${spring-security.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -85,6 +95,16 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring-data-jpa.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
         </dependency>
 
         <dependency>
