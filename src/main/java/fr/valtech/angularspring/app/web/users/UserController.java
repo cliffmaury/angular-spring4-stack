@@ -43,8 +43,8 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public UserDTO createUser() {
-        userService.createUser("NAME", "LASTNAME");
-        return new UserDTO("A", "B");
+        User user = userService.createUser("NAME", "LASTNAME");
+        return new UserDTO(user.getName(), user.getLastName());
     }
 
     @RequestMapping("/users")

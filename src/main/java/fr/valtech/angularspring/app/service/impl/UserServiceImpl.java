@@ -22,8 +22,9 @@ public class UserServiceImpl implements UserService {
     @Inject
     private UserRepository userRepository;
 
-    public void createUser(String name, String lastName) {
+    public User createUser(String name, String lastName) {
         logger.warn("create User");
+        return userRepository.save(new User(name, lastName));
     }
 
     public List<User> findAllUsers() {

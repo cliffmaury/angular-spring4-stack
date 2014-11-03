@@ -1,5 +1,6 @@
 package fr.valtech.angularspring.config;
 
+import fr.valtech.angularspring.app.repository.UserRepository;
 import fr.valtech.angularspring.app.service.UserService;
 import fr.valtech.angularspring.app.service.impl.UserServiceImpl;
 import org.mockito.Mockito;
@@ -15,6 +16,11 @@ public class TestConfig {
     @Bean
     public UserService userService() {
         return Mockito.mock(UserServiceImpl.class);
+    }
+
+    @Bean
+    public UserRepository userRepository() {
+        return Mockito.mock(UserRepository.class);
     }
 
 }
