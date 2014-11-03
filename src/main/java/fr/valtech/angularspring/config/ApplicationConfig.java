@@ -26,7 +26,8 @@ import java.util.Arrays;
         PersistenceConfig.class,
         DaoConfig.class,
         RepositoryConfig.class,
-        ServiceConfig.class
+        ServiceConfig.class,
+        SecurityConfig.class
 })
 public class ApplicationConfig {
 
