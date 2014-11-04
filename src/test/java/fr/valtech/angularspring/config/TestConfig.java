@@ -14,12 +14,12 @@ import org.springframework.context.annotation.Configuration;
 public class TestConfig {
 
     @Bean
-    public UserService userService() {
+    public UserService userServiceMock() {
         return Mockito.mock(UserServiceImpl.class);
     }
 
     @Bean
-    public UserRepository userRepository() {
+    public UserRepository userRepositoryMock() {
         return Mockito.mock(UserRepository.class);
     }
 
