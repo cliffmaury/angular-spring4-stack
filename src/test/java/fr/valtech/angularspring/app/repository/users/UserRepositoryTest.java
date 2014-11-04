@@ -1,6 +1,7 @@
-package fr.valtech.angularspring.app.repository;
+package fr.valtech.angularspring.app.repository.users;
 
 import fr.valtech.angularspring.app.domain.User;
+import fr.valtech.angularspring.app.repository.UserRepository;
 import fr.valtech.angularspring.config.ApplicationConfig;
 import fr.valtech.angularspring.config.Profiles;
 import fr.valtech.angularspring.log.Log;

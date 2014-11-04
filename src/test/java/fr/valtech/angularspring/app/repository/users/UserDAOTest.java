@@ -1,4 +1,4 @@
-package fr.valtech.angularspring.app.repository;
+package fr.valtech.angularspring.app.repository.users;
 
 import fr.valtech.angularspring.app.dao.UserDAO;
 import fr.valtech.angularspring.app.domain.User;

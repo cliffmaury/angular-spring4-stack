@@ -1,4 +1,4 @@
-package fr.valtech.angularspring.app.service;
+package fr.valtech.angularspring.app.service.users;
 
 import org.junit.Before;
 import org.junit.Test;

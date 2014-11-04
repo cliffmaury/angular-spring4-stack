@@ -1,7 +1,8 @@
-package fr.valtech.angularspring.app.service;
+package fr.valtech.angularspring.app.service.users;
 
 import fr.valtech.angularspring.app.domain.User;
 import fr.valtech.angularspring.app.repository.UserRepository;
+import fr.valtech.angularspring.app.service.UserService;
 import fr.valtech.angularspring.app.web.users.fixture.RestDataFixture;
 import fr.valtech.angularspring.config.LogConfig;
 import fr.valtech.angularspring.config.SecurityConfig;
