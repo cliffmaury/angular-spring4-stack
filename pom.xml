@@ -23,7 +23,7 @@
         <javax.inject.version>1</javax.inject.version>
 
         <spring.version>4.1.1.RELEASE</spring.version>
-        <spring-data-jpa.version>1.6.4.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
         <spring-security.version>4.0.0.M2</spring-security.version>
 
     </properties>
