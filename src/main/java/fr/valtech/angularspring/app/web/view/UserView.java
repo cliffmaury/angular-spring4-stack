@@ -1,11 +1,11 @@
-package fr.valtech.angularspring.app.web.dto;
+package fr.valtech.angularspring.app.web.view;
 
-public class UserDTO {
+public class UserView {
 
     private String name;
     private String lastName;
 
-    public UserDTO(String name, String lastName) {
+    public UserView(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
     }

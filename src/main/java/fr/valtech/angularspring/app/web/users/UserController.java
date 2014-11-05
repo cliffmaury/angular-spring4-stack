@@ -2,7 +2,7 @@ package fr.valtech.angularspring.app.web.users;
 
 import fr.valtech.angularspring.app.domain.User;
 import fr.valtech.angularspring.app.service.UserService;
-import fr.valtech.angularspring.app.web.dto.UserDTO;
+import fr.valtech.angularspring.app.web.view.UserView;
 import fr.valtech.angularspring.log.Log;
 import org.slf4j.Logger;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,22 +38,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public UserDTO user() {
-        UserDTO u = new UserDTO("NAME", "LASTNAME");
+    public UserView user() {
+        UserView u = new UserView("NAME", "LASTNAME");
         return u;
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public UserDTO createUser() {
+    public UserView createUser() {
         User user = userService.createUser("NAME", "LASTNAME");
-        return new UserDTO(user.getName(), user.getLastName());
+        return new UserView(user.getName(), user.getLastName());
     }
 
     @RequestMapping("/users")
-    public List<UserDTO> users() {
+    public List<UserView> users() {
         List<User> allUsers = userService.findAllUsers();
-        List<UserDTO> users = new ArrayList<>();
-        allUsers.stream().map(u -> new UserDTO(u.getName(), u.getLastName())).forEach(u -> users.add(u));
+        List<UserView> users = new ArrayList<>();
+        allUsers.stream().map(u -> new UserView(u.getName(), u.getLastName())).forEach(u -> users.add(u));
         return users;
     }
 }

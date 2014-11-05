@@ -1,8 +1,8 @@
 package fr.valtech.angularspring.app.web.users;
 
-import fr.valtech.angularspring.app.web.dto.UserDTO;
 import fr.valtech.angularspring.app.web.users.fixture.RestDataFixture;
 import fr.valtech.angularspring.app.web.utils.TestUtil;
+import fr.valtech.angularspring.app.web.view.UserView;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpMethod;
@@ -39,7 +39,7 @@ public class UsersControllerClientTest {
         this.server.expect(requestTo("/users")).andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(TestUtil.convertObjectToJsonString(RestDataFixture.findAllUsers()), TestUtil.APPLICATION_JSON_UTF8));
 
-        List<UserDTO> users = restTemplate.getForObject("/users", List.class);
+        List<UserView> users = restTemplate.getForObject("/users", List.class);
 
         assertThat(users.size(), is(3));
 
