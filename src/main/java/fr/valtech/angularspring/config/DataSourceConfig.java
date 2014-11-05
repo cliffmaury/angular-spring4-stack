@@ -3,12 +3,15 @@ package fr.valtech.angularspring.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.vendor.Database;
 
+import javax.inject.Inject;
 import javax.sql.DataSource;
 
 /**
@@ -16,11 +19,15 @@ import javax.sql.DataSource;
  */
 
 /**
- * Configuration for datasource according to environement
+ * Configuration for datasource according to environnment
  */
 @Configuration
-//@PropertySource({"classpath:"})
+@PropertySource("classpath:config/application.properties")
+@PropertySource("classpath:config/application-${spring.profiles.active:" + Profiles.DEV + "}.properties")
 public class DataSourceConfig {
+
+    @Inject
+    private Environment environment;
 
     @Bean
     @Profile(Profiles.TEST)
@@ -34,7 +41,7 @@ public class DataSourceConfig {
     public DataSource dataSourceDEV() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
-        dataSource.setUrl("jdbc:hsqldb:hsql://localhost:9001/testdb");
+        dataSource.setUrl(environment.getProperty("db.url"));
         return dataSource;
     }
 
