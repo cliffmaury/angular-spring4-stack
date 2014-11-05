@@ -21,11 +21,16 @@
         <logback.version>1.1.2</logback.version>
 
         <javax.inject.version>1</javax.inject.version>
+        <javax.persistence.version>2.1.0</javax.persistence.version>
 
         <spring.version>4.1.1.RELEASE</spring.version>
         <spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
         <spring-security.version>4.0.0.M2</spring-security.version>
 
+        <jackson.version>2.3.4</jackson.version>
+
+        <hsqldb.version>2.3.2</hsqldb.version>
+        <hibernate.version>4.3.7.Final</hibernate.version>
     </properties>
 
     <repositories>
@@ -127,19 +132,19 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.3.4</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
-            <version>2.1.0</version>
+            <version>${javax.persistence.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>2.3.2</version>
+            <version>${hsqldb.version}</version>
         </dependency>
 
         <!-- COMPILE -->
@@ -149,7 +154,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.6.Final</version>
+            <version>${hibernate.version}</version>
             <scope>runtime</scope>
         </dependency>
 
