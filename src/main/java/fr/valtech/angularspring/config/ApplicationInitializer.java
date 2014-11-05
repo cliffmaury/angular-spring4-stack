@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
  */
 public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+    private final static String DEFAULT_PROFILE = Profiles.DEV;
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[]{ ApplicationConfig.class };
@@ -29,7 +31,7 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
     public void onStartup(ServletContext servletContext) throws ServletException {
         // initialize default profile
         if (System.getProperty("spring.profiles.active") == null) {
-            System.setProperty("spring.profiles.active", Profiles.TEST);
+            System.setProperty("spring.profiles.active", DEFAULT_PROFILE);
         }
         super.onStartup(servletContext);
     }
