@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.vendor.Database;
@@ -23,30 +22,32 @@ import javax.sql.DataSource;
  */
 @Configuration
 @PropertySource("classpath:config/application.properties")
-@PropertySource("classpath:config/application-${spring.profiles.active:" + Profiles.DEV + "}.properties")
+@PropertySource("classpath:config/application-${spring.profiles.active:" + Profiles.DEFAULT + "}.properties")
 public class DataSourceConfig {
+
+    public static final String DB_DRIVER = "db.driver";
+    public static final String DB_URL = "db.url";
 
     @Inject
     private Environment environment;
 
     @Bean
-    @Profile(Profiles.TEST)
+    @Profile({ Profiles.TEST, Profiles.DEV })
     public DataSource dataSourceTEST() {
-        EmbeddedDatabase database = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).build();
-        return database;
+        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).build();
     }
 
     @Bean
-    @Profile(Profiles.DEV)
+    @Profile(Profiles.DEV_STANDALONE)
     public DataSource dataSourceDEV() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(org.hsqldb.jdbcDriver.class.getName());
-        dataSource.setUrl(environment.getProperty("db.url"));
+        dataSource.setDriverClassName(environment.getProperty(DB_DRIVER));
+        dataSource.setUrl(environment.getProperty(DB_URL));
         return dataSource;
     }
 
     @Bean
-    @Profile({ Profiles.TEST, Profiles.DEV })
+    @Profile({ Profiles.TEST, Profiles.DEV, Profiles.DEV_STANDALONE })
     public Database database() {
         return Database.HSQL;
     }
