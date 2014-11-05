@@ -31,6 +31,8 @@
 
         <hsqldb.version>2.3.2</hsqldb.version>
         <hibernate.version>4.3.7.Final</hibernate.version>
+        <HikariCP.version>2.2.2</HikariCP.version>
+        <mysql-connector-java.version>5.1.32</mysql-connector-java.version>
     </properties>
 
     <repositories>
@@ -145,6 +147,18 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
 
         <!-- COMPILE -->
