@@ -19,6 +19,7 @@ import java.util.List;
  * Created by cliff.maury on 22/10/2014.
  */
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
     @Log
@@ -31,7 +32,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/name", method = RequestMethod.GET)
     public String hello(@AuthenticationPrincipal UserDetails userDetails) {
         logger.warn("enter controller");
         return "Hello " + userDetails.getUsername() + "!";
