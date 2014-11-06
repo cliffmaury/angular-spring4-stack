@@ -18,3 +18,7 @@ Build a new stack from scratch with the following features :
 * Unit tests for REST Controllers, Services, Repositories
 
 * AJAX Authentication for REST calls
+
+* (SOON) AngularJS 1.3
+* (SOON) Authentication with AngularJS
+* (SOON) Integrate ui-router
