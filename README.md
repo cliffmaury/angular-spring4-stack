@@ -1,7 +1,7 @@
 angular-spring4-stack
 =====================
 
-Build a new stack from scratch with the following features :
+Build a new stack STEP BY STEP (see commits) from scratch with the following features :
 
 * Full Java Configuration (no XML configuration neither web.xml)
 * Spring MVC 4
