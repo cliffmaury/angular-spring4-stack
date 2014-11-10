@@ -35,7 +35,9 @@
         <HikariCP.version>2.2.2</HikariCP.version>
         <mysql-connector-java.version>5.1.32</mysql-connector-java.version>
 
-        <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.1.3.Final</hibernate-validator.version
+
+        <guava.version>18.0</guava.version>
     </properties>
 
     <repositories>
@@ -173,7 +175,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <!-- COMPILE -->
