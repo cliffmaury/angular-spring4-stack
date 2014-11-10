@@ -82,7 +82,7 @@ public class SecurityConfig {
                     .exceptionHandling().
                     authenticationEntryPoint(restAuthenticationEntryPoint).and()
                     .formLogin()
-                    .loginProcessingUrl("/api/restLogin")
+                    .loginProcessingUrl("/api/login")
                     .successHandler(restAuthenticationSuccessHandler)
                     .failureHandler(restAuthenticationFailureHandler).and()
                     .httpBasic();
