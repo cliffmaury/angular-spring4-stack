@@ -19,7 +19,7 @@ public class TestUtil {
 
     public static String convertObjectToJsonString(Object object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        mapper.setSerializationInclusion(JsonInclude.Include.ALWAYS);
         return mapper.writeValueAsString(object);
     }
 
