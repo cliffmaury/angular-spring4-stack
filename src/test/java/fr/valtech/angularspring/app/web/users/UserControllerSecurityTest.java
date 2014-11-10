@@ -86,7 +86,7 @@ public class UserControllerSecurityTest {
 
         when(userServiceMock.findAllUsers()).thenReturn(RestDataFixture.findAllUsers());
 
-        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/api/users").accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isUnauthorized())
         ;
@@ -99,7 +99,7 @@ public class UserControllerSecurityTest {
         when(userServiceMock.findAllUsers()).thenReturn(RestDataFixture.findAllUsers());
 
         mockMvc
-                .perform(get("/users").accept(MediaType.APPLICATION_JSON))
+                .perform(get("/api/users").accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
@@ -113,13 +113,10 @@ public class UserControllerSecurityTest {
     @Ignore
     public void createUserWithUser() throws Exception {
 
-        String name = anyString();
-        String lastName = anyString();
-
-        when(userServiceMock.createUser(name, lastName)).thenReturn(new User("a", "b"));
+        when(userServiceMock.createUser(anyString(), anyString())).thenReturn(new User("a", "b"));
 
         mockMvc
-                .perform(post("/users").accept(MediaType.APPLICATION_JSON));
+                .perform(post("/api/users").accept(MediaType.APPLICATION_JSON));
 
 //        verify(userServiceMock, times(0)).createUser(anyString(), anyString());
 //        verifyNoMoreInteractions(userServiceMock);
@@ -130,13 +127,10 @@ public class UserControllerSecurityTest {
     @WithMockUser(username = "admin", roles = "ADMIN")
     public void createUserWithAdmin() throws Exception {
 
-        String name = anyString();
-        String lastName = anyString();
-
-        when(userServiceMock.createUser(name, lastName)).thenReturn(new User("a", "b"));
+        when(userServiceMock.createUser(anyString(), anyString())).thenReturn(new User("a", "b"));
 
         mockMvc
-                .perform(post("/users")
+                .perform(post("/api/users")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
         ;

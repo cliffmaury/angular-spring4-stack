@@ -36,10 +36,10 @@ public class UsersControllerClientTest {
     @Test
     public void getUsers() throws IOException {
 
-        this.server.expect(requestTo("/users")).andExpect(method(HttpMethod.GET))
+        this.server.expect(requestTo("/api/users")).andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(TestUtil.convertObjectToJsonString(RestDataFixture.findAllUsers()), TestUtil.APPLICATION_JSON_UTF8));
 
-        List<UserView> users = restTemplate.getForObject("/users", List.class);
+        List<UserView> users = restTemplate.getForObject("/api/users", List.class);
 
         assertThat(users.size(), is(3));
 

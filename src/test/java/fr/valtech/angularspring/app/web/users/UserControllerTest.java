@@ -57,7 +57,7 @@ public class UserControllerTest {
     public void findAllUsers_should_return_3_users() throws Exception {
 
         when(userServiceMock.findAllUsers()).thenReturn(RestDataFixture.findAllUsers());
-        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)).
+        mockMvc.perform(get("/api/users").accept(MediaType.APPLICATION_JSON)).
                 andExpect(status().isOk()).
                 andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8)).
                 andExpect(jsonPath("$", hasSize(3)));

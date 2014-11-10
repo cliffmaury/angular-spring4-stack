@@ -67,7 +67,7 @@ public class UserControllerWebContextBasedTest {
 
         when(userServiceMock.findAllUsers()).thenReturn(RestDataFixture.findAllUsers());
 
-        mockMvc.perform(get("/users").accept(MediaType.APPLICATION_JSON)).
+        mockMvc.perform(get("/api/users").accept(MediaType.APPLICATION_JSON)).
                 andExpect(status().isOk()).
                 andDo(print()).
                 andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8)).
