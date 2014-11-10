@@ -3,6 +3,8 @@ package fr.valtech.angularspring.app.web.users;
 import fr.valtech.angularspring.app.domain.User;
 import fr.valtech.angularspring.app.service.UserService;
 import fr.valtech.angularspring.app.web.users.fixture.RestDataFixture;
+import fr.valtech.angularspring.app.web.utils.TestUtil;
+import fr.valtech.angularspring.app.web.view.UserView;
 import fr.valtech.angularspring.config.SecurityConfig;
 import fr.valtech.angularspring.config.TestConfig;
 import fr.valtech.angularspring.config.WebConfig;
@@ -130,9 +132,9 @@ public class UserControllerSecurityTest {
         when(userServiceMock.createUser(anyString(), anyString())).thenReturn(new User("a", "b"));
 
         mockMvc
-                .perform(post("/api/users")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .perform(post("/api/users").contentType(TestUtil.APPLICATION_JSON_UTF8).content(TestUtil.convertObjectToJsonString(new UserView("aa", "bb")))
+                        .accept(MediaType.APPLICATION_JSON)).andDo(print())
+                .andExpect(status().isCreated())
         ;
 
 //        verify(userServiceMock).createUser(name,lastName);

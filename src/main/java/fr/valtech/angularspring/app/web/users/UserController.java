@@ -5,13 +5,13 @@ import fr.valtech.angularspring.app.service.UserService;
 import fr.valtech.angularspring.app.web.view.UserView;
 import fr.valtech.angularspring.log.Log;
 import org.slf4j.Logger;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,12 +45,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public UserView createUser() {
-        User user = userService.createUser("NAME", "LASTNAME");
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserView createUser(@RequestBody @Valid UserView userView) {
+        User user = userService.createUser(userView.getName(), userView.getLastName());
         return new UserView(user.getName(), user.getLastName());
     }
 
-    @RequestMapping("/users")
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<UserView> users() {
         List<User> allUsers = userService.findAllUsers();
         List<UserView> users = new ArrayList<>();

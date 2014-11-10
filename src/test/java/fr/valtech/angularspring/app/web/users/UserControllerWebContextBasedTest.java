@@ -1,8 +1,10 @@
 package fr.valtech.angularspring.app.web.users;
 
+import fr.valtech.angularspring.app.domain.User;
 import fr.valtech.angularspring.app.service.UserService;
 import fr.valtech.angularspring.app.web.users.fixture.RestDataFixture;
 import fr.valtech.angularspring.app.web.utils.TestUtil;
+import fr.valtech.angularspring.app.web.view.UserView;
 import fr.valtech.angularspring.config.TestConfig;
 import fr.valtech.angularspring.config.WebConfig;
 import org.junit.Before;
@@ -14,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -22,6 +25,7 @@ import javax.inject.Inject;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -77,4 +81,30 @@ public class UserControllerWebContextBasedTest {
         verifyNoMoreInteractions(userServiceMock);
     }
 
+    @Test
+    public void createUser_with_name_and_firstName_too_long() throws Exception {
+
+        UserView userView = new UserView(TestUtil.createStringWithLength(51), TestUtil.createStringWithLength(51));
+        mockPost("/api/users", userView, status().isBadRequest());
+    }
+
+    @Test
+    public void createUser_with_name_and_firstName_NULL() throws Exception {
+
+        UserView userView = new UserView(null, null);
+        mockPost("/api/users", userView, status().isBadRequest());
+    }
+
+    @Test
+    public void createUser_with_name_and_firstName_Is_Created() throws Exception {
+
+        when(userServiceMock.createUser(anyString(), anyString())).thenReturn(new User("a", "b"));
+
+        UserView userView = new UserView(TestUtil.createStringWithLength(30), TestUtil.createStringWithLength(20));
+        mockPost("/api/users", userView, status().isCreated());
+    }
+
+    private void mockPost(String url, Object content, ResultMatcher status) throws Exception {
+        mockMvc.perform(post(url).contentType(TestUtil.APPLICATION_JSON_UTF8).content(TestUtil.convertObjectToJsonString(content))).andDo(print()).andExpect(status);
+    }
 }
