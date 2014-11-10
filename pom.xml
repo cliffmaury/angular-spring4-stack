@@ -170,6 +170,12 @@
             <version>${mysql-connector-java.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+
         <!-- COMPILE -->
 
         <!-- RUNTIME -->
@@ -259,6 +265,7 @@
             <groupId>org.glassfish</groupId>
             <artifactId>javax.el</artifactId>
             <version>3.0.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- TEST -->
