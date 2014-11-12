@@ -8,6 +8,7 @@ import fr.valtech.angularspring.security.Authorities;
 import org.slf4j.Logger;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * Created by cliff.maury on 23/10/2014.
  */
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Log
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(new User(name, lastName));
     }
 
+    @Transactional(readOnly = true)
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
