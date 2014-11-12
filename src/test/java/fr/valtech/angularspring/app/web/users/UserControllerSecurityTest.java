@@ -26,6 +26,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.test.context.web.ServletTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -139,5 +140,19 @@ public class UserControllerSecurityTest {
 
 //        verify(userServiceMock).createUser(name,lastName);
 //        verifyNoMoreInteractions(userServiceMock);
+    }
+
+    @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
+    public void createUser_with_name_and_firstName_Is_Created() throws Exception {
+
+        when(userServiceMock.createUser(anyString(), anyString())).thenReturn(new User("a", "b"));
+
+        UserView userView = new UserView(TestUtil.createStringWithLength(30), TestUtil.createStringWithLength(20));
+        mockPost("/api/users", userView, status().isCreated());
+    }
+
+    private void mockPost(String url, Object content, ResultMatcher status) throws Exception {
+        mockMvc.perform(post(url).contentType(TestUtil.APPLICATION_JSON_UTF8).content(TestUtil.convertObjectToJsonString(content))).andDo(print()).andExpect(status);
     }
 }
