@@ -31,3 +31,23 @@ Client Side :
 * (SOON) AngularJS 1.3
 * (SOON) Authentication with AngularJS
 * (SOON) Integrate ui-router
+
+Development mode
+=====================
+
+* Install Node.JS on workstation
+* In src/main/webapp directorory, run commands :
+```
+$src/main/webapp>bower install
+$src/main/webapp>npm install
+```
+
+* Run grunt server :
+```
+$src/main/webapp>grunt server
+```
+
+* Run Java backend (from project's root):
+```
+$>mvn jetty:run
+```
