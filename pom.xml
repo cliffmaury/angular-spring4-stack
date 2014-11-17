@@ -38,6 +38,8 @@
         <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
 
         <guava.version>18.0</guava.version>
+
+        <yeoman.source.directory>src/main/webapp</yeoman.source.directory>
     </properties>
 
     <repositories>
@@ -277,6 +279,7 @@
         <finalName>angularspring</finalName>
 
         <plugins>
+
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -288,13 +291,62 @@
                     </webApp>
                 </configuration>
             </plugin>
+
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <warSourceDirectory>${yeoman.source.directory}/dist</warSourceDirectory>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>prod</id>
+            <build>
+                <plugins>
+                    
+                    <plugin>
+                        <groupId>com.github.trecloux</groupId>
+                        <artifactId>yeoman-maven-plugin</artifactId>
+                        <version>0.2</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <yeomanProjectDirectory>${yeoman.source.directory}</yeomanProjectDirectory>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${yeoman.source.directory}/dist</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>${yeoman.source.directory}/.tmp</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>${yeoman.source.directory}/bower_components</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>${yeoman.source.directory}/node_modules</directory>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
