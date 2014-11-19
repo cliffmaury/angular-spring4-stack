@@ -24,7 +24,7 @@
         <javax.persistence.version>2.1.0</javax.persistence.version>
         <javax.validation.version>1.1.0.Final</javax.validation.version>
 
-        <spring.version>4.1.1.RELEASE</spring.version>
+        <spring.version>4.1.2.RELEASE</spring.version>
         <spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
         <spring-security.version>4.0.0.M2</spring-security.version>
 
@@ -308,7 +308,7 @@
             <id>prod</id>
             <build>
                 <plugins>
-                    
+
                     <plugin>
                         <groupId>com.github.trecloux</groupId>
                         <artifactId>yeoman-maven-plugin</artifactId>
