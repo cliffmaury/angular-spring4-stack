@@ -1,9 +1,6 @@
 package fr.valtech.angularspring.config;
 
-import fr.valtech.angularspring.security.Authorities;
-import fr.valtech.angularspring.security.RestAuthenticationEntryPoint;
-import fr.valtech.angularspring.security.RestAuthenticationFailureHandler;
-import fr.valtech.angularspring.security.RestAuthenticationSuccessHandler;
+import fr.valtech.angularspring.security.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -85,6 +82,9 @@ public class SecurityConfig {
         @Inject
         private RestAuthenticationSuccessHandler restAuthenticationSuccessHandler;
 
+        @Inject
+        private RestLogoutSuccessHandler restLogoutSuccessHandler;
+
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http.csrf().disable();
@@ -98,6 +98,7 @@ public class SecurityConfig {
                     .loginProcessingUrl("/api/login")
                     .successHandler(restAuthenticationSuccessHandler)
                     .failureHandler(restAuthenticationFailureHandler).and()
+                    .logout().logoutUrl("/api/logout").logoutSuccessHandler(restLogoutSuccessHandler).and()
                     .httpBasic();
         }
     }
