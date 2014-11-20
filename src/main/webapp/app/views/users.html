@@ -1,0 +1,30 @@
+<div class="page-header">
+    <h1>Users</h1>
+</div>
+<div>
+    <form name="addUserForm" class="form-inline">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" maxlength="50" ng-model="name" id="name" placeholder="Enter name" required="required">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" maxlength="50" ng-model="lastName" id="lastName" placeholder="Enter last name" required="required">
+        </div>
+        <button type="button" ng-click="addUser()" class="btn btn-primary">Create user</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>LastName</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="u in users">
+            <td>{{u.name}}</td>
+            <td>{{u.lastName}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

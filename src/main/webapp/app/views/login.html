@@ -1,0 +1,30 @@
+<div class="page-header" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <h1>Welcome! Please Login</h1>
+        </div>
+    </div>
+</div>
+<div class="lead">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <form name="login-form">
+                <div class="form-group has-success has-feedback">
+                    <label for="username">Login</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Login" maxlength="50" ng-model="username" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password"
+                           maxlength="50" ng-model="password" required="required">
+                </div>
+                <button type="button" class="btn-lg btn btn-block btn-primary" ng-click="doLogin()">Log In</button>
+            </form>
+        </div>
+    </div>
+    <div class="row" ng-if="showUsername">
+        <div class="col-lg-6 col-lg-offset-3">
+            Hello, {remoteUsername} !
+        </div>
+    </div>
+</div>
